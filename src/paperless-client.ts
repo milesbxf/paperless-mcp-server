@@ -210,7 +210,13 @@ export class PaperlessClient {
       params: searchParams,
     });
 
-    return response.data;
+    // Strip full document content from search results to keep responses lean.
+    // Use get_document to retrieve full content for a specific document when needed.
+    const data = response.data;
+    if (data.results) {
+      data.results = data.results.map(({ content: _, ...doc }) => doc as PaperlessDocument);
+    }
+    return data;
   }
 
   async getDocument(documentId: number): Promise<PaperlessDocument> {
