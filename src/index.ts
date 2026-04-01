@@ -10,6 +10,7 @@ import {
   ReadResourceRequestSchema,
 } from "@modelcontextprotocol/sdk/types.js";
 import { z } from "zod";
+import { zodToJsonSchema } from "zod-to-json-schema";
 import { PaperlessClient, PaperlessDocument, BulkUpdateDocumentItem } from "./paperless-client.js";
 
 // Environment configuration
@@ -172,221 +173,221 @@ server.setRequestHandler(ListToolsRequestSchema, async () => {
       {
         name: "search_documents",
         description: "Search for documents in Paperless-ngx with optional filters",
-        inputSchema: SearchDocumentsSchema,
+        inputSchema: zodToJsonSchema(SearchDocumentsSchema) as Record<string, unknown>,
       },
       {
         name: "get_document",
         description: "Retrieve detailed information about a specific document",
-        inputSchema: GetDocumentSchema,
+        inputSchema: zodToJsonSchema(GetDocumentSchema) as Record<string, unknown>,
       },
       {
         name: "update_document",
         description: "Update document metadata (title, tags, correspondent, etc.)",
-        inputSchema: UpdateDocumentSchema,
+        inputSchema: zodToJsonSchema(UpdateDocumentSchema) as Record<string, unknown>,
       },
       {
         name: "list_tags",
         description: "List all available tags in Paperless-ngx",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "list_correspondents",
         description: "List all correspondents in Paperless-ngx",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "list_document_types",
         description: "List all document types in Paperless-ngx",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "create_tag",
         description: "Create a new tag in Paperless-ngx",
-        inputSchema: CreateTagSchema,
+        inputSchema: zodToJsonSchema(CreateTagSchema) as Record<string, unknown>,
       },
       {
         name: "create_correspondent",
         description: "Create a new correspondent in Paperless-ngx",
-        inputSchema: CreateCorrespondentSchema,
+        inputSchema: zodToJsonSchema(CreateCorrespondentSchema) as Record<string, unknown>,
       },
       {
         name: "create_document_type",
         description: "Create a new document type in Paperless-ngx",
-        inputSchema: CreateDocumentTypeSchema,
+        inputSchema: zodToJsonSchema(CreateDocumentTypeSchema) as Record<string, unknown>,
       },
       {
         name: "download_document",
         description: "Get download URL for a document's original file",
-        inputSchema: GetDocumentSchema,
+        inputSchema: zodToJsonSchema(GetDocumentSchema) as Record<string, unknown>,
       },
       {
         name: "bulk_update_documents",
         description: "Update multiple documents at once with new metadata (requires document IDs)",
-        inputSchema: BulkUpdateDocumentsSchema,
+        inputSchema: zodToJsonSchema(BulkUpdateDocumentsSchema) as Record<string, unknown>,
       },
       // Document Operations
       {
         name: "delete_document",
         description: "Delete a document from Paperless-ngx",
-        inputSchema: GetDocumentSchema,
+        inputSchema: zodToJsonSchema(GetDocumentSchema) as Record<string, unknown>,
       },
       {
         name: "get_document_suggestions",
         description: "Get automatic suggestions for document metadata",
-        inputSchema: GetDocumentSchema,
+        inputSchema: zodToJsonSchema(GetDocumentSchema) as Record<string, unknown>,
       },
       {
         name: "get_document_metadata",
         description: "Get extracted metadata from document",
-        inputSchema: GetDocumentSchema,
+        inputSchema: zodToJsonSchema(GetDocumentSchema) as Record<string, unknown>,
       },
       // Storage Paths
       {
         name: "list_storage_paths",
         description: "List all storage paths in Paperless-ngx",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "get_storage_path",
         description: "Get details of a specific storage path",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       {
         name: "create_storage_path",
         description: "Create a new storage path",
-        inputSchema: CreateStoragePathSchema,
+        inputSchema: zodToJsonSchema(CreateStoragePathSchema) as Record<string, unknown>,
       },
       {
         name: "update_storage_path",
         description: "Update an existing storage path",
-        inputSchema: UpdateStoragePathSchema,
+        inputSchema: zodToJsonSchema(UpdateStoragePathSchema) as Record<string, unknown>,
       },
       {
         name: "delete_storage_path",
         description: "Delete a storage path",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       // Custom Fields
       {
         name: "list_custom_fields",
         description: "List all custom fields in Paperless-ngx",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "get_custom_field",
         description: "Get details of a specific custom field",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       {
         name: "create_custom_field",
         description: "Create a new custom field",
-        inputSchema: CreateCustomFieldSchema,
+        inputSchema: zodToJsonSchema(CreateCustomFieldSchema) as Record<string, unknown>,
       },
       {
         name: "update_custom_field",
         description: "Update an existing custom field",
-        inputSchema: UpdateCustomFieldSchema,
+        inputSchema: zodToJsonSchema(UpdateCustomFieldSchema) as Record<string, unknown>,
       },
       {
         name: "delete_custom_field",
         description: "Delete a custom field",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       // Saved Views
       {
         name: "list_saved_views",
         description: "List all saved views in Paperless-ngx",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "get_saved_view",
         description: "Get details of a specific saved view",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       {
         name: "create_saved_view",
         description: "Create a new saved view",
-        inputSchema: CreateSavedViewSchema,
+        inputSchema: zodToJsonSchema(CreateSavedViewSchema) as Record<string, unknown>,
       },
       {
         name: "update_saved_view",
         description: "Update an existing saved view",
-        inputSchema: UpdateSavedViewSchema,
+        inputSchema: zodToJsonSchema(UpdateSavedViewSchema) as Record<string, unknown>,
       },
       {
         name: "delete_saved_view",
         description: "Delete a saved view",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       // Tags CRUD
       {
         name: "get_tag",
         description: "Get details of a specific tag",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       {
         name: "update_tag",
         description: "Update an existing tag",
-        inputSchema: UpdateTagSchema,
+        inputSchema: zodToJsonSchema(UpdateTagSchema) as Record<string, unknown>,
       },
       {
         name: "delete_tag",
         description: "Delete a tag",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       // Correspondents CRUD
       {
         name: "get_correspondent",
         description: "Get details of a specific correspondent",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       {
         name: "update_correspondent",
         description: "Update an existing correspondent",
-        inputSchema: UpdateCorrespondentSchema,
+        inputSchema: zodToJsonSchema(UpdateCorrespondentSchema) as Record<string, unknown>,
       },
       {
         name: "delete_correspondent",
         description: "Delete a correspondent",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       // Document Types CRUD
       {
         name: "get_document_type",
         description: "Get details of a specific document type",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       {
         name: "update_document_type",
         description: "Update an existing document type",
-        inputSchema: UpdateDocumentTypeSchema,
+        inputSchema: zodToJsonSchema(UpdateDocumentTypeSchema) as Record<string, unknown>,
       },
       {
         name: "delete_document_type",
         description: "Delete a document type",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       // Tasks
       {
         name: "list_tasks",
         description: "List all tasks in Paperless-ngx",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "acknowledge_task",
         description: "Acknowledge a completed task",
-        inputSchema: IdSchema,
+        inputSchema: zodToJsonSchema(IdSchema) as Record<string, unknown>,
       },
       // Statistics & System
       {
         name: "get_statistics",
         description: "Get Paperless-ngx statistics",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
       {
         name: "get_logs",
         description: "Get Paperless-ngx system logs",
-        inputSchema: z.object({}),
+        inputSchema: zodToJsonSchema(z.object({})) as Record<string, unknown>,
       },
     ],
   };
