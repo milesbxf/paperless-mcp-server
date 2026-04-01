@@ -69,6 +69,10 @@ const UpdateDocumentSchema = z.object({
   document_type: z.number().optional().describe("Document type ID"),
   tags: z.array(z.number()).optional().describe("Array of tag IDs to assign"),
   archive_serial_number: z.string().optional().describe("Archive serial number"),
+  custom_fields: z.array(z.object({
+    field: z.number().describe("Custom field ID"),
+    value: z.unknown().describe("Value to set for the custom field"),
+  })).optional().describe("Custom field values to set on the document"),
 });
 
 const CreateTagSchema = z.object({
