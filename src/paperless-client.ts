@@ -219,19 +219,10 @@ export class PaperlessClient {
   }
 
   async getDocumentContent(documentId: number): Promise<string> {
-    try {
-      const response: AxiosResponse<string> = await this.client.get(`/api/documents/${documentId}/content/`, {
-        headers: {
-          'Accept': 'text/plain',
-        },
-      });
-      return response.data;
-    } catch (error) {
-      // If content endpoint fails, try to get from document metadata
-      console.error(`Failed to get content for document ${documentId}:`, error);
-      const document = await this.getDocument(documentId);
-      return document.content || 'Content not available';
-    }
+    // The /content/ endpoint requires session auth (not token auth) and redirects to login.
+    // Retrieve content directly from the document object instead.
+    const document = await this.getDocument(documentId);
+    return document.content || 'Content not available';
   }
 
   async updateDocument(documentId: number, updates: UpdateDocumentParams): Promise<PaperlessDocument> {
